@@ -1,15 +1,17 @@
 <div class="mt-8">
     <div class="container grid grid-cols-3 gap-8">
         <div class="col-span-2 ">
-            {!!$current->iframe!!}
+            <div class="embed-responsive ">
+                {!!$current->iframe!!}
+            </div>
             {{$current->name}}
-            <p>Indice: {{$index}}</p>
-            <p>Previo: @if($previous)
-                {{$previous->id}}
+            <p>Indice: {{$this->index}}</p>
+            <p>Previous: @if($this->previous)
+                {{$this->previous->id}}
                 @endif
             </p>
-            <p>Next: @if($next)
-                {{$next->id}}
+            <p>Next: @if($this->next)
+                {{$this->next->id}}
             @endif</p>
         </div>
         <div class="card ">

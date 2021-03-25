@@ -7,7 +7,7 @@ use App\Models\Course;
 use App\Models\Lesson;
 class CourseStatus extends Component
 {
-    public $course, $current, $index, $previous, $next;
+    public $course, $current;
 
 
     public function mount(Course $course){
@@ -16,17 +16,6 @@ class CourseStatus extends Component
         foreach ($course->lessons as $lesson) {
             if(!$lesson->completed){
                 $this->current = $lesson;
-                //Indice (recupero una colexion con todas las lecciones del curso)
-                $this->index = $course->lessons->search($lesson);
-                $this->previous = $course->lessons[$this->index -1];
-                $this->next = $course->lessons[$this->index +1];
-
-
-
-
-
-
-
 
                 break;
             }
@@ -42,17 +31,30 @@ class CourseStatus extends Component
         $this->current = $lesson;
         //recupero la informacion almacenada en Lesson
         $this->index = $this->course->lessons->pluck('id')->search($lesson->id);
-        if($this->index == 0){
-            $this->previous = null;
-        }else{
 
-            $this->previous = $this->course->lessons[$this->index - 1];
+
+
+    }
+
+    //Propiedades computadas para los botones de Next y Previous de cada curso
+    public function getIndexProperty(){
+        return $this->course->lessons->pluck('id')->search($this->current->id);
+    }
+    public function getPreviousProperty()
+    {
+        if ($this->index == 0) {
+            return null;
+        } else {
+
+            return $this->course->lessons[$this->index - 1];
         }
-
-        if($this->index == $this->course->lessons->count() -1){
-            $this->next = null;
-        }else{
-            $this->next = $this->course->lessons[$this->index + 1];
+    }
+    public function getNextProperty()
+    {
+        if ($this->index == $this->course->lessons->count() - 1) {
+            return null;
+        } else {
+            return $this->course->lessons[$this->index + 1];
         }
     }
 }
