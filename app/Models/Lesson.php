@@ -11,6 +11,10 @@ class Lesson extends Model
 
     protected $guarded = ['id'];
 
+    //Agrego un atributo por medio de un metodo para verificar el curso que esta completado
+    public function getCompletedAttribute(){
+        return $this->users->contains(auth()->user()->id);
+    }
     //Relacion uno a uno
 
     public function description(){

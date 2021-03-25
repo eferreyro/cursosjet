@@ -28,4 +28,9 @@ $similares = Course::where('category_id', $course->category_id)
        return redirect()->route('courses.status', $course);
 
     }
-}
+/*     //Esta funcion la dejo de usar ya que voy a vincular directamente al componente de Livewire CourseStatus
+    public function status(Course $course){
+        return view('courses.status', compact('course'));
+    }
+    */
+} 

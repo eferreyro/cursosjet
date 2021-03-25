@@ -3,6 +3,7 @@
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CourseController;
+use App\Http\Livewire\CourseStatus;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,7 +28,5 @@ Route::get('cursos/{course}', [CourseController::class, 'show'])->name('courses.
 //Ruta para matricular a un usuario
 Route::post('courses/{course}/enrolled', [CourseController::class, 'enrolled'])->middleware('auth')->name('courses.enrolled');
 
-//Ruta para los cursos matriculados
-Route::get('course-status/{course}', function ($course){
-    return "Aqui vas a poder llevar el control de tu avance";
-})->name('courses.status');
+//Ruta para los cursos matriculados usando el controlador CourseStatus (php artisan make:livewire CourseStatus)
+Route::get('course-status/{course}', CourseStatus::class)->name('courses.status');
