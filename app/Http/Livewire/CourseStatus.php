@@ -5,8 +5,14 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use App\Models\Course;
 use App\Models\Lesson;
+use Illuminate\Foundation\Auth\Access\Authorizable;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+
 class CourseStatus extends Component
 {
+
+    use AuthorizesRequests;
+
     public $course, $current;
 
 
@@ -25,7 +31,8 @@ class CourseStatus extends Component
             # Le indico que Lesson es la ultima
             $this->current = $course->lessons->last();
         }
-        
+        //Valido la ruta para que solo los usuarios registrados y autentificados pueden acceder
+        $this->authorize('enrolled', $course);
     }
 
 

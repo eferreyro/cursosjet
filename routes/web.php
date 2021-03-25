@@ -29,4 +29,4 @@ Route::get('cursos/{course}', [CourseController::class, 'show'])->name('courses.
 Route::post('courses/{course}/enrolled', [CourseController::class, 'enrolled'])->middleware('auth')->name('courses.enrolled');
 
 //Ruta para los cursos matriculados usando el controlador CourseStatus (php artisan make:livewire CourseStatus)
-Route::get('course-status/{course}', CourseStatus::class)->name('courses.status');
+Route::get('course-status/{course}', CourseStatus::class)->name('courses.status')->middleware(('auth'));

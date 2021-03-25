@@ -25,4 +25,12 @@ class CoursePolicy
         //recupero el registro de todos los usuarios que han tomado el curso (DB usuario_curso)
         return $course->students->contains($user->id);
     }
+
+    public function published(?User $user, Course $course){
+        if($course->status == 3){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }
