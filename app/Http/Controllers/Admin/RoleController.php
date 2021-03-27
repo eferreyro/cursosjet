@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
 class RoleController extends Controller
 {
@@ -15,8 +16,10 @@ class RoleController extends Controller
      */
     public function index()
     {
-        //
-        return view('admin.roles.index');
+        //rescato todos los registros de roles de la DB
+        $roles = Role::all();
+
+        return view('admin.roles.index', compact('roles'));
     }
 
     /**
@@ -26,8 +29,9 @@ class RoleController extends Controller
      */
     public function create()
     {
-        //
-        return view('admin.roles.create');
+        //Rescato todos los registros de los permisos de la DB
+        $permissions = Permission::all();
+        return view('admin.roles.create', compact('permissions'));
     }
 
     /**
@@ -38,7 +42,12 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'permissions' => 'required'
+        ]);
+        //Retornamos el valor del objeto REQUEST
+        return $request->all();
     }
 
     /**
