@@ -232,42 +232,52 @@ return [
 
     'menu' => [
         [
-            'text' => 'search',
-            'search' => true,
-            'topnav' => true,
+            'text'          => 'search',
+            'search'        => true,
+            'topnav'        => true,
         ],
         [
-            'text' => 'blog',
-            'url'  => 'admin/blog',
-            'can'  => 'manage-blog',
+            'text'          => 'blog',
+            'url'           => 'admin/blog',
+            'can'           => 'manage-blog',
         ],
         [
-            'text'        => 'Dashboard',
+            'text'          => 'Dashboard',
             'route'         => 'admin.home',
-            'icon'        => 'fas fa-fw fa-tachometer-alt',
+            'icon'          => 'fas fa-fw fa-tachometer-alt',
 
         ],
         [
-            'text'        => 'Lista de Roles',
+            'text'          => 'Lista de Roles',
             'route'         => 'admin.roles.index',
-            'icon'        => 'fas fa-fw fa-users-cog',
+            'icon'          => 'fas fa-fw fa-users-cog',
+            'active'        => ['admin/roles*']
 
         ],
-        ['header' => 'account_settings'],
+        
         [
-            'text' => 'profile',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-user',
+        'text'          => 'Usuarios',
+        'route'         => 'admin.users.index',
+        'icon'          => 'fas fa-fw fa-users',
+        'active'        => ['admin/users*']
+
+        ],
+
+        ['header'           => 'account_settings'],
+        [
+            'text'          => 'profile',
+            'url'           => 'admin/settings',
+            'icon'          => 'fas fa-fw fa-user',
         ],
         [
-            'text' => 'change_password',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
+            'text'          => 'change_password',
+            'url'           => 'admin/settings',
+            'icon'          => 'fas fa-fw fa-lock',
         ],
         [
-            'text'    => 'multilevel',
-            'icon'    => 'fas fa-fw fa-share',
-            'submenu' => [
+            'text'         => 'multilevel',
+            'icon'         => 'fas fa-fw fa-share',
+            'submenu'      => [
                 [
                     'text' => 'level_one',
                     'url'  => '#',
@@ -438,5 +448,5 @@ return [
     | https://github.com/jeroennoten/Laravel-AdminLTE/#93-livewire
     */
 
-    'livewire' => false,
+    'livewire' => true,
 ];

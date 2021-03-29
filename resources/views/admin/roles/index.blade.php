@@ -7,9 +7,26 @@
 @stop
 
 @section('content')
+
+@if (session('info'))
+
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <strong>Hecho!</strong> {{session('info')}}
+</div>
+
+@endif
+
     <div class="card">
         <div class="card-header">
-            <a href="{{route('admin.roles.create')}}">Crear curso</a>
+            
+            <a href="{{route('admin.roles.create')}}">
+            <span>  <i class="fas fa-plus-circle"></i>
+            </span>
+            Crear Rol
+            </a>
         </div>
         <div class="card-body">
             <table class="table table-striped">
@@ -25,10 +42,10 @@
                      <tr>
                         <td>{{$role->id}}</td>
                         <td>{{$role->name}}</td>
-                        <td>
+                        <td width="10px">
                             <a class="btn btn-secondary" href="{{route('admin.roles.edit', $role)}}">Edit</a>
                         </td>
-                        <td>
+                        <td width="10px">
                         <form action="{{route('admin.roles.destroy', $role)}}" method="POST">
                             @method('delete')
                             @csrf

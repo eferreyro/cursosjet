@@ -3,11 +3,11 @@
 @section('title', 'SysQA Tests')
 
 @section('content_header')
-    <h1>SysQA Tests</h1>
+    <h1>Lista de usuarios</h1>
 @stop
 
 @section('content')
-    <p>Proyecto de pruebas rapidas de releases.</p>
+    @livewire('admin-users')
 @stop
 
 @section('css')
