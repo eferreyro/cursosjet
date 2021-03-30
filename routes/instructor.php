@@ -8,4 +8,4 @@ use App\Http\Livewire\InstructorCourses;
 Route::redirect('', 'instr/courses');
 
 //Ruta de instructor que esta relacionada con el middleware RouteServiceProvider
-Route::get('courses', InstructorCourses::class)->name('courses.index');
+Route::get('courses', InstructorCourses::class)->middleware('can:Leer Cursos')->name('courses.index');
