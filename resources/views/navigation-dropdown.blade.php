@@ -75,9 +75,15 @@
                             <x-jet-dropdown-link href="{{ route('profile.show') }}">
                                 Perfil
                             </x-jet-dropdown-link>
-                                @can('Leer Cursos')
+                                @can('Ver Cursos')
                             <x-jet-dropdown-link href="{{ route('instructor.courses.index') }}">
                                 Instructor
+                            </x-jet-dropdown-link>
+                            @endcan
+
+                            @can('Ver Dashboard')
+                            <x-jet-dropdown-link href="{{ route('admin.home') }}">
+                                Admin
                             </x-jet-dropdown-link>
                             @endcan
                             @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
@@ -183,11 +189,16 @@
                     <x-jet-responsive-nav-link href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
                         Perfil
                     </x-jet-responsive-nav-link>
-                
+                @can('Ver Cursos')
                 <x-jet-responsive-nav-link href="{{ route('instructor.courses.index') }}" :active="request()->routeIs('instructor.courses.index')">
                     Instructor
                 </x-jet-responsive-nav-link>
-                
+                @endcan
+                @can('Ver Dashboard')
+                <x-jet-responsive-nav-link href="{{ route('admin.home') }}" :active="request()->routeIs('instructor.courses.index')">
+                    Admin
+                </x-jet-responsive-nav-link>
+                @endcan
 
                     @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
                         <x-jet-responsive-nav-link href="{{ route('api-tokens.index') }}" :active="request()->routeIs('api-tokens.index')">

@@ -19,7 +19,6 @@ class RoleSeeder extends Seeder
         $role->permissions()->attach([1, 2, 3, 4, 5, 6, 7 ,8 ,9, 10 ,11]);
         //Forma SyncPermissions que manda los nombres en lugar de los ID
         $role = Role::create(['name' => 'Instructor']);
-
         $role->syncPermissions('Crear Cursos','Ver Cursos', 'Editar Cursos', 'Eliminar Cursos',);
     }
 }

@@ -245,12 +245,14 @@ return [
             'text'          => 'Dashboard',
             'route'         => 'admin.home',
             'icon'          => 'fas fa-fw fa-tachometer-alt',
+            'can'           => 'Ver Dashboard'
 
         ],
         [
             'text'          => 'Lista de Roles',
             'route'         => 'admin.roles.index',
             'icon'          => 'fas fa-fw fa-users-cog',
+            'can'           => 'Ver Roles',
             'active'        => ['admin/roles*']
 
         ],
@@ -259,6 +261,7 @@ return [
         'text'          => 'Usuarios',
         'route'         => 'admin.users.index',
         'icon'          => 'fas fa-fw fa-users',
+        'can'           => 'Ver Usuarios',
         'active'        => ['admin/users*']
 
         ],

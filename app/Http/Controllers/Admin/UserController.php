@@ -9,6 +9,12 @@ use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:Ver Usuarios')->only('index');
+        $this->middleware('can:Editar Usuarios')->only('edit', 'update');
+
+    }
     /**
      * Display a listing of the resource.
      *
