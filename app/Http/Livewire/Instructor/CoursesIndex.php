@@ -16,6 +16,7 @@ class CoursesIndex extends Component
         //Recupero todo el listado de cursos
         $courses = Course::where('title', 'LIKE', '%' . $this->search . '%')
                            ->where('user_id',auth()->user()->id)
+                           ->latest('id')
                            ->paginate(8);
         //Ya que tengo la lista de todos los cursos separados por ID de usuario se lo paso a la vista
         return view('livewire.instructor.courses-index', compact('courses'));
