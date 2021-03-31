@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Instructor;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Course;
+use App\Models\Level;
+use App\Models\Price;
 
 class CourseController extends Controller
 {
@@ -26,8 +29,11 @@ class CourseController extends Controller
      */
     public function create()
     {
+        $categories = Category::pluck('name', 'id');
+        $levels = Level::pluck('name', 'id');
+        $prices = Price::pluck('name', 'id');
         //Traigo una vista de Instructor\Course\Index.blade.php
-        return view('instructor.courses.create');
+        return view('instructor.courses.create', compact('categories', 'levels', 'prices'));
     }
 
     /**
@@ -61,8 +67,12 @@ class CourseController extends Controller
      */
     public function edit(Course $course)
     {
+        $categories = Category::pluck('name', 'id');
+        $levels = Level::pluck('name', 'id');
+        $prices = Price::pluck('name', 'id');
+       
         //Traigo una vista de Instructor\Course\Index.blade.php
-        return view('instructor.courses.edit', compact('course'));
+        return view('instructor.courses.edit', compact('course', 'categories', 'levels', 'prices'));
     }
 
     /**
