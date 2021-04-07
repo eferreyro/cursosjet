@@ -4,24 +4,36 @@ namespace App\Http\Livewire\Instructor;
 
 use Livewire\Component;
 use App\Models\Course;
+//Importo los modelos de category y level para leer sus registros
+use App\Models\Category;
+use App\Models\Level;
+
 use Livewire\WithPagination;
 
 class CoursesIndex extends Component
 {
     use WithPagination;
 
-    public $search;
+    public $category_id;
+    public $level_id;
+
+
     public function render()
     {
-        //Recupero todo el listado de cursos
-        $courses = Course::where('title', 'LIKE', '%' . $this->search . '%')
-                           ->where('user_id',auth()->user()->id)
-                           ->latest('id')
-                           ->paginate(8);
-        //Ya que tengo la lista de todos los cursos separados por ID de usuario se lo paso a la vista
-        return view('livewire.instructor.courses-index', compact('courses'));
+        $categories = Category::all();
+        $levels = Level::all();
+
+        $courses = Course::where('status', 3)
+                            ->category($this->category_id)
+                            ->level($this->level_id)
+                            ->latest('id')  
+                            ->paginate(8);
+
+        return view('livewire.courses-index', compact('courses', 'categories', 'levels'));
     }
-    public function limpiar_page(){
-        $this->reset('page');
+
+    public function resetFilters(){
+        $this->reset(['category_id', 'level_id']);
     }
+
 }

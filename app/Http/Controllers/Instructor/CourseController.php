@@ -53,7 +53,8 @@ class CourseController extends Controller
             'description' => 'required',
             'category_id' => 'required',
             'level_id' => 'required',
-            'price_id' => 'required'
+            'price_id' => 'required',
+            'file' => 'image'
 
         ]);
         //Le pasamos al Request los valores que caputamos en el formulario de validacion
@@ -93,7 +94,7 @@ class CourseController extends Controller
         $categories = Category::pluck('name', 'id');
         $levels = Level::pluck('name', 'id');
         $prices = Price::pluck('name', 'id');
-       
+
         //Traigo una vista de Instructor\Course\Index.blade.php
         return view('instructor.courses.edit', compact('course', 'categories', 'levels', 'prices'));
     }
@@ -107,7 +108,35 @@ class CourseController extends Controller
      */
     public function update(Request $request, Course $course)
     {
-        //
+        //Reclas de validacion
+        $request->validate([
+            'title' => 'required',
+            'slug' => 'required|unique:courses,slug,' . $course->id,
+            'subtitle' => 'required',
+            'description' => 'required',
+            'category_id' => 'required',
+            'level_id' => 'required',
+            'price_id' => 'required',
+            'file' => 'image'
+
+        ]);
+        //Actualizo la DB
+        $course->update($request->all());
+        if ($request->file('file')) {
+            # Subo la imagen a la direccion establecida
+            $url = Storage::put('courses', $request->file('file'));
+            //Si existe una imagen en DB, elimino estsa del repositorio
+            if ($course->image) {
+                Storage::delete($course->image->url);
+                //Una vez eliminada la imagen, actualizo la imagen con la nueva
+                $course->image->update(['url' => $url]);
+            } else {
+                //Si el curso no tiene una imagen, actualizo el registro con esta imagen
+                $course->image()->create(['url' => $url]);
+            }
+        }
+        //Redirecciono
+        return redirect(route('instructor.courses.edit', $course));
     }
 
     /**

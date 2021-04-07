@@ -7,9 +7,9 @@
                </div>
                <div class="mb-4">
                    {!! Form::label('slug', 'Slug del Curso') !!}
-                   {!! Form::text('slug', null, ['readonly'=> 'readonly','class' => 'form-input block w-full mt-1 font-semibold' . ($errors->has('slug') ? ' border-red-600' : '')]) !!}
+                   {!! Form::text('slug', null, ['readonly' => 'readonly', 'class' => 'form-input block w-full mt-1 font-semibold' . ($errors->has('slug') ? ' border-red-600' : '')]) !!}
                    @error('slug')
-                       <strong class="text-xs text-red-600">The SLUG cannot be processed if the TITLE field is empty.</strong>
+                       <strong class="text-xs text-red-600">{{ $message }}</strong>
                    @enderror
                </div>
                <div class="mb-4">
@@ -60,6 +60,9 @@
                            vero
                            voluptatibus eaque tempora, non aperiam pariatur ea nam excepturi accusantium accusamus
                            veritatis iusto? Repudiandae est fuga accusantium.</p>
-                       {!! Form::file('file', ['class' => 'form-input w-full mt-20 ml-auto ', 'id' => 'file']) !!}
+                       {!! Form::file('file', ['class' => 'form-input w-full mt-20 ml-auto '. ($errors->has('file') ? ' border-red-600' : ''), 'id' => 'file', 'accept' => 'image/*']) !!}
+                       @error('file')
+                           <strong class="text-xs text-red-600">{{ $message }}</strong>
+                       @enderror
                    </div>
                </div>
