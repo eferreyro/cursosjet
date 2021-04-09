@@ -38,7 +38,7 @@
     @endforeach
     <div x-data="{open: false}">
         <a x-show="!open" x-on:click="open = true"  class="flex item-center cursor-pointer">
-            <i class="fas fa-plus-square text-2xl text-red-500 mr-2"> </i>
+            <i class="far fa-plus-square text-2xl text-red-500 mr-2"> </i>
             Agregar seccion
         </a>
         <div class="card">
