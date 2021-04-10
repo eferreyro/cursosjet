@@ -1,7 +1,7 @@
 <div>
     {{-- Manipulo la vista del componente para mostrarla en courses-curriculum.php --}}
     @foreach ($section->lessons as $item)
-        <article class="card mt-4">
+        <article class="card mt-4" x-data="{open: false}">
             <div class="card-body">
                 @if ($lesson->id == $item->id)
                     <form wire:submit.prevent="update">
@@ -32,15 +32,15 @@
 
                         <div class="mt-4 flex justify-end">
                             <button type="button" class="btn btn-danger" wire:click="cancel">Cancel</button>
-                            <button type="submit" class="btn btn-primary ml-2" >Actualizar</button>
+                            <button type="submit" class="btn btn-primary ml-2">Actualizar</button>
 
                         </div>
                     </form>
                 @else
                     <header>
-                        <h1><i class="far fa-play-circle text-blue-500 mr-1"></i>Leccion: {{ $item->name }}</h1>
+                        <h1 x-on:click="open = !open" class="cursor-pointer"><i class="far fa-play-circle text-blue-500 mr-1"></i>Leccion: {{ $item->name }}</h1>
                     </header>
-                    <div>
+                    <div x-show="open">
                         <hr calss="my-2">
                         <p class="text-sm">Plataforma: {{ $item->platform->name }}</p>
                         <p class="text-sm">Enlace: <a class="text-blue-600" href="{{ $item->url }}"
@@ -48,8 +48,14 @@
                         <div class="mt-2">
                             <button class="btn btn-primary text-2m"
                                 wire:click="edit({{ $item }})">Editar</button>
-                            <button class="btn btn-danger text-2m" wire:click="destroy({{$item}})">Eliminar</button>
-
+                            <button class="btn btn-danger text-2m"
+                                wire:click="destroy({{ $item }})">Eliminar</button>
+                            <div class="my-2">
+                                @livewire('instructor.lesson-description', ['lesson' => $item], key('lesson-description-'.$item->id))
+                            </div>
+                            <div class="mb-2">
+                                @livewire('instructor.lesson-resources', ['lesson' => $item], key('lesson-resources-'.$item->id))
+                            </div>
                         </div>
                     </div>
                 @endif
@@ -82,7 +88,7 @@
                                 <option value="{{ $platform->id }}">{{ $platform->name }}</option>
                             @endforeach
                         </select>
-                        
+
                     </div>
                     <div class="flex items-center mt-2">
                         <label class="w-32">URL:</label>
