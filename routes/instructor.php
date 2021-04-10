@@ -16,3 +16,7 @@ Route::resource('courses', CourseController::class)->names('courses');
 
 //INSTR/COURSES
 Route::get('courses/{course}/curriculum', CoursesCurriculum::class)->name('courses.curriculum');
+
+
+//METAS DE UN CURSO
+Route::get('courses/{course}/goals', [CourseController::class, 'goals'])->name('courses.goals');
