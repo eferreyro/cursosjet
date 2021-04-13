@@ -3,7 +3,7 @@
     <h1 class="text-2xl font-bold mb-4">Estudiantes del Curso</h1>
     <x-table-responsive>
         <div class="px-6 py-4 flex">
-            <input wire:keydown="limpiar_page" wire:model="search" class="form-input flex-1 shadow-sm " type="text"
+            <input wire:model="search" class="form-input flex-1 shadow-sm " type="text"
                 placeholder="Buscar estudiante">
             <a class="btn btn-danger ml-2" href="{{ route('instructor.courses.create') }}">Crear estudiante</a>
         </div>
