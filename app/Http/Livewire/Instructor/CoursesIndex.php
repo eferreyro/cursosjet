@@ -29,7 +29,7 @@ class CoursesIndex extends Component
                             ->latest('id')  
                             ->paginate(8);
 
-        return view('livewire.courses-index', compact('courses', 'categories', 'levels'));
+        return view('livewire.instructor.courses-index', compact('courses', 'categories', 'levels'));
     }
 
     public function resetFilters(){

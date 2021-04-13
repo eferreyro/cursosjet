@@ -6,7 +6,7 @@
         <h1 class="text-white font-bold text-4xl ">Systems Install Cente / CURSOS</h1>
         <p class="text-white text-lg mt-2 mb-4">Sistema de gestion de instalaciones de servidores para WinsTech</p>
         <!-- component -->
-    <!-- This is an example component -->
+    <!-- Componente del buscador -->
     @livewire('search')
         </div>
        </div>

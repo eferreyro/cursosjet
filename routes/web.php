@@ -16,13 +16,15 @@ use App\Http\Livewire\CourseStatus;
 */
 
 Route::get('/', HomeController::class)->name('home');
-
+//Ruta para mostrar el Dashboard
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
+//Ruta para mostrar la lista de cursos
 Route::get('cursos', [CourseController::class, 'index'])->name('courses.index');
 
+//Ruta para mostrar la informacion del curso
 Route::get('cursos/{course}', [CourseController::class, 'show'])->name('courses.show');
 
 //Ruta para matricular a un usuario

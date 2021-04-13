@@ -8,6 +8,7 @@ class CourseController extends Controller
 {
     //
     public function index(){
+        //retorno la vista en Resources/Views/courses/index.blade.php
         return view('courses.index');
     }
     // Verifico si el status del curso esta como publicado o, si tiene otro, que lo compare contra CoursesPolicy

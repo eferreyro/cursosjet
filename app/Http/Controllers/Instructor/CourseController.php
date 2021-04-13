@@ -67,7 +67,7 @@ class CourseController extends Controller
                 'url' => $url
             ]);
         }
-        //Retornamos lo que se manda desde el formulario instr/courses
+        //Retornamos lo que se manda desde el formulario instructor/courses
         return redirect()->route('instructor.courses.edit', $course);
     }
 

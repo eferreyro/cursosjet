@@ -11,7 +11,7 @@ class HomeController extends Controller
     {
        $courses = Course::where('status', '3')->latest('id')->get()->take(12);
         
-    
+        //Retorno la vista de cursos desde HomeController a la vista resources/views/welcome.blade.php
         return view('welcome', compact('courses'));
         
     }
