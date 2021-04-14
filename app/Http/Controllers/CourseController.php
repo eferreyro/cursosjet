@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Models\Course;
 class CourseController extends Controller
 {
+
+
+
     //
     public function index(){
         //retorno la vista en Resources/Views/courses/index.blade.php

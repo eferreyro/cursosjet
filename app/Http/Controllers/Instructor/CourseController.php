@@ -12,6 +12,14 @@ use Illuminate\Support\Facades\Storage;
 
 class CourseController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('can:Ver Cursos')->only('index');
+        $this->middleware('can:Crear Cursos')->only('create', 'store');
+        $this->middleware('can:Editar Cursos')->only('edit', 'update', 'goals');
+        $this->middleware('can:Eliminar Cursos')->only('destroy');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -91,6 +99,8 @@ class CourseController extends Controller
      */
     public function edit(Course $course)
     {
+        $this->authorize('dictated', $course);
+
         $categories = Category::pluck('name', 'id');
         $levels = Level::pluck('name', 'id');
         $prices = Price::pluck('name', 'id');
@@ -108,6 +118,9 @@ class CourseController extends Controller
      */
     public function update(Request $request, Course $course)
     {
+        //Regla de control para un usuario. Viene del metodo dictated de CoursePolicy
+        $this->authorize('dictated', $course);
+
         //Reclas de validacion
         $request->validate([
             'title' => 'required',

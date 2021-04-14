@@ -13,7 +13,7 @@ use Livewire\WithPagination;
 class CoursesIndex extends Component
 {
     use WithPagination;
-
+    public $search;
     public $category_id;
     public $level_id;
 
@@ -22,18 +22,18 @@ class CoursesIndex extends Component
     {
         $categories = Category::all();
         $levels = Level::all();
+        $courses = Course::where('title', 'LIKE', '%' . $this->search . '%')
+                            ->where('user_id', auth()->user()->id)
+                            ->orderBy('id', 'desc')
+                            ->paginate(10);
 
-        $courses = Course::where('status', 3)
-                            ->category($this->category_id)
-                            ->level($this->level_id)
-                            ->latest('id')  
-                            ->paginate(8);
 
         return view('livewire.instructor.courses-index', compact('courses', 'categories', 'levels'));
     }
 
-    public function resetFilters(){
-        $this->reset(['category_id', 'level_id']);
+
+    public function limpiar_page(){
+        $this->reset('page');
     }
 
 }

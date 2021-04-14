@@ -5,17 +5,23 @@ namespace App\Http\Livewire\Instructor;
 use Livewire\Component;
 use App\Models\Course;
 use App\Models\Section;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class CoursesCurriculum extends Component
 {
+    use AuthorizesRequests;
+
     public $course, $section, $name;
     /* Reglas de validacion */
+
     protected $rules = [
         'section.name' => 'required'
     ];
     public function mount(Course $course){
         $this->course = $course;
         $this->section = new Section();
+
+        $this->authorize('dictated', $course);
     }
 
     public function render()

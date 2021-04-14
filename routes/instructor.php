@@ -18,8 +18,8 @@ Route::resource('courses', CourseController::class)->names('courses');
 
 
 //INSTRUCTOR/COURSES
-Route::get('courses/{course}/curriculum', CoursesCurriculum::class)->name('courses.curriculum');
+Route::get('courses/{course}/curriculum', CoursesCurriculum::class)->middleware('can:Editar Cursos')->name('courses.curriculum');
 //METAS DE UN CURSO
 Route::get('courses/{course}/goals', [CourseController::class, 'goals'])->name('courses.goals');
 //ESTUDIANTES DE UN CURSO
-Route::get('courses/{course}/students', CoursesStudents::class)->name('courses.students');
+Route::get('courses/{course}/students', CoursesStudents::class)->middleware('can:Editar Cursos')->name('courses.students');

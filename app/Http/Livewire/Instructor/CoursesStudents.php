@@ -6,10 +6,14 @@ use App\Models\Course;
 use Livewire\Component;
 use Livewire\WithPagination;
 
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+
 class CoursesStudents extends Component
 {
     //Hago dinamica la paginacion
     use WithPagination;
+    
+    use AuthorizesRequests;
 
     //Declaro las variables
     public $course, $search;
@@ -19,6 +23,8 @@ class CoursesStudents extends Component
     {
         //Recibo el parametro que llega desde la URL que viene del modelo Course
         $this->course = $course;
+
+        $this->authorize('dictated', $course);
     }
     public function updatingSearch(){
         $this->resetPage();
