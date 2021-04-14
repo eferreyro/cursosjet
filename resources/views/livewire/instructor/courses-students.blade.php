@@ -1,5 +1,5 @@
 <div>
-    <x-slot name="course">{{ $course->slug }}</x-slot>
+    
     <h1 class="text-2xl font-bold mb-4">Estudiantes del Curso</h1>
     <x-table-responsive>
         <div class="px-6 py-4 flex">

@@ -1,8 +1,5 @@
 <div>
-    {{-- SLOT CON NOMBRE para la vista CoursesCurriculum.php --}}
-    <x-slot name="course">
-        {{ $course->slug }}
-    </x-slot>
+
     {{-- /CODE --}}
 
     <h1 class="text-2xl font-bold">LECIONES DEL CURSO</h1>

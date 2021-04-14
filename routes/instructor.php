@@ -23,3 +23,6 @@ Route::get('courses/{course}/curriculum', CoursesCurriculum::class)->middleware(
 Route::get('courses/{course}/goals', [CourseController::class, 'goals'])->name('courses.goals');
 //ESTUDIANTES DE UN CURSO
 Route::get('courses/{course}/students', CoursesStudents::class)->middleware('can:Editar Cursos')->name('courses.students');
+
+//STATUS DE UN CURSO
+Route::post('courses/{course}/status', [CourseController::class, 'status'])->name('courses.status');

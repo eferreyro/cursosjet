@@ -1,8 +1,6 @@
-<x-instructor-layout>
+<x-instructor-layout :course="$course">
     {{-- SLOT CON NOMBRE para la vista CoursesCurriculum.php --}}
-    <x-slot name="course">
-        {{$course->slug}}
-    </x-slot>
+ 
 
     
     {{-- INICIA CONTENIDO DINAMICO DE VIEWS/LAYOUTS/INSTRUCTOR.BLADE.PHP --}}

@@ -12,7 +12,7 @@ class CoursesStudents extends Component
 {
     //Hago dinamica la paginacion
     use WithPagination;
-    
+
     use AuthorizesRequests;
 
     //Declaro las variables
@@ -26,7 +26,8 @@ class CoursesStudents extends Component
 
         $this->authorize('dictated', $course);
     }
-    public function updatingSearch(){
+    public function updatingSearch()
+    {
         $this->resetPage();
     }
 
@@ -34,6 +35,6 @@ class CoursesStudents extends Component
     {
         $students = $this->course->students()->where('name', 'LIKE', '%' . $this->search . '%')->paginate(8);
 
-        return view('livewire.instructor.courses-students', compact('students'))->layout('layouts.instructor');
+        return view('livewire.instructor.courses-students', compact('students'))->layout('layouts.instructor', ['course' => $this->course]);
     }
 }
