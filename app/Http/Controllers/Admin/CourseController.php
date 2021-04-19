@@ -22,17 +22,27 @@ class CourseController extends Controller
     //
     public function show(Course $course)
     {
+        //policie de CoursePolicy llamado Revision
+        $this->authorize('revision', $course);
+        //Retorno la vista SHOW con los datos de Course
         return view('admin.courses.show', compact('course'));
     }
 
 
     public function approved(Course $course)
     {
+        //policie de CoursePolicy llamado Revision
+        $this->authorize('revision', $course);
+        //Valido si los campos tienen datos y no vienen vacios
         if (!$course->lessons || !$course->goals || !$course->requirements || !$course->image){
             return back()->with('info', 'No se puede publicar un curso que no este completo');
         }
+
+        //Cambio el status de pendiente a aprobado
         $course->status = 3;
+        //Guardo la data en la DB
         $course->save();
+        //Redirecciono a la vista index con mensaje de exito
         return redirect()->route('admin.courses.index')->with('info', 'El curso ha sido publicado con exito');
     }
 }

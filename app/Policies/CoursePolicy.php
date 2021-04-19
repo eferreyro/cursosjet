@@ -41,4 +41,14 @@ class CoursePolicy
             return false;
         }
     }
+
+    //Metodo para evitar que un usuario admin publique un curso que esta como BORRADOR (Status == 2)
+    public function revision(User $user, Course $course)
+    {
+        if ($course->status == 2) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
