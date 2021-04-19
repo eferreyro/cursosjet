@@ -85,7 +85,7 @@ return [
 
     'layout_topnav' => null,
     'layout_boxed' => null,
-    'layout_fixed_sidebar' => null,
+    'layout_fixed_sidebar' => true,
     'layout_fixed_navbar' => null,
     'layout_fixed_footer' => null,
 
@@ -266,10 +266,10 @@ return [
 
         ],
 
-        ['header'           => 'account_settings'],
+        ['header'           => 'OPCIONES'],
         [
-            'text'          => 'profile',
-            'url'           => 'admin/settings',
+            'text'          => 'Pendientes de Aprobacion',
+            'route'           => 'admin.courses.index',
             'icon'          => 'fas fa-fw fa-user',
         ],
         [
