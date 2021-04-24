@@ -23,5 +23,5 @@ Route::get('courses', [CourseController::class, 'index'])->name('courses.index')
 Route::get('courses/{course}', [CourseController::class, 'show'])->name('courses.show');
 
 
-//Ruta de boton Aprovar Curso del administrador de cursos
+//Ruta de boton Publicar Curso del administrador de cursos
 Route::post('courses/{course}/approved', [CourseController::class, 'approved'])->name('courses.approved');
