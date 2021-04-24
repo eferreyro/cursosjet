@@ -47,7 +47,7 @@ class CourseController extends Controller
         $course->save();
         //Envio correo electronico o email
         $mail = new AppovedCourse($course);
-        Mail::to($course->teacher->email)->send($mail);
+        Mail::to($course->teacher->email)->Mail::queue($mail);
         //Redirecciono a la vista index con mensaje de exito
         return redirect()->route('admin.courses.index')->with('info', 'El curso ha sido publicado con exito, se ha enviado un email de confirmacion.');
     }
