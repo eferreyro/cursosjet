@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 
 use App\Models\Course;
 
+use Illuminate\Support\Facades\Mail;
+use App\Mail\AppovedCourse;
+
 class CourseController extends Controller
 {
     //
@@ -42,7 +45,10 @@ class CourseController extends Controller
         $course->status = 3;
         //Guardo la data en la DB
         $course->save();
+        //Envio correo electronico o email
+        $mail = new AppovedCourse();
+        Mail::to($course->teacher->email)->send($mail);
         //Redirecciono a la vista index con mensaje de exito
-        return redirect()->route('admin.courses.index')->with('info', 'El curso ha sido publicado con exito');
+        return redirect()->route('admin.courses.index')->with('info', 'El curso ha sido publicado con exito, se ha enviado un email de confirmacion al instructor.');
     }
 }
