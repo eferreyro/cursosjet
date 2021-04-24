@@ -3,7 +3,7 @@
 @section('title', 'SysQA Tests')
 
 @section('content_header')
-    <h1>Cursos pendientes de Aprobacion</h1>
+    <h1>Cursos pendientes de Publicacion</h1>
 @stop
 
 @section('content')
@@ -18,8 +18,8 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Name</th>
-                        <th>categoria</th>
+                        <th>Nombre</th>
+                        <th>Categoria</th>
                         <th></th>
                     </tr>
                 </thead>

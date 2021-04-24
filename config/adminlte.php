@@ -268,7 +268,7 @@ return [
 
         ['header'           => 'OPCIONES'],
         [
-            'text'          => 'Pendientes de Aprobacion',
+            'text'          => 'Pendientes de Publicacion',
             'route'           => 'admin.courses.index',
             'icon'          => 'fas fa-fw fa-user',
         ],
