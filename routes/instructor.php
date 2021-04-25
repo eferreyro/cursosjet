@@ -26,3 +26,7 @@ Route::get('courses/{course}/students', CoursesStudents::class)->middleware('can
 
 //STATUS DE UN CURSO
 Route::post('courses/{course}/status', [CourseController::class, 'status'])->name('courses.status');
+
+
+//OBSERVACIONES DE UN CURSO
+Route::get('courses/{course}/observation', [CourseController::class, 'observation'])->name('courses.observation');

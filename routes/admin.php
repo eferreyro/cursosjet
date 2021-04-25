@@ -25,3 +25,12 @@ Route::get('courses/{course}', [CourseController::class, 'show'])->name('courses
 
 //Ruta de boton Publicar Curso del administrador de cursos
 Route::post('courses/{course}/approved', [CourseController::class, 'approved'])->name('courses.approved');
+
+
+//Ruta de boton Observar Curso del administrador de cursos
+Route::get('courses/{course}/observation', [CourseController::class, 'observation'])->name('courses.observation');
+
+
+
+//Ruta de boton Rechazar Curso del administrador de cursos
+Route::post('courses/{course}/reject', [CourseController::class, 'reject'])->name('courses.reject');

@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,7 +22,9 @@
 <body>
     <div class="bgImage">
     <h1 class="colorH1">Este es un email de prueba</h1>
-    <p>El curso <strong>{{$course->title}}</strong> se ha publicado con exito</p>
+    <p>El curso <strong>{{$course->title}}</strong> ha sido rechazado</p>
+    <h2>Motivo de Rechazo</h2>
+    {!!$course->observation->body!!}
     </div>
 </body>
 </html>

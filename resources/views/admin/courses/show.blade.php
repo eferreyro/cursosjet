@@ -135,6 +135,7 @@
                         @csrf
                         <button type="submit" class="btn btn-primary w-full">Publicar Curso</button>
                     </form>
+                    <a href="{{route('admin.courses.observation', $course)}}" class="btn btn-danger w-full block text-center mt-4">Observar Curso</a>
                 </div>
             </section>
 

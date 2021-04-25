@@ -171,6 +171,13 @@ class CourseController extends Controller
     public function status(Course $course){
        $course->status = 2;
        $course->save();
-       return back();
+
+       //Recupero el registro de observacion y le pido que se elimine el registro de la DB
+       $course->observation->delete();
+       return redirect()->route('instructor.courses.edit', $course);
+    }
+
+    public function observation(Course $course){
+        return view('instructor.courses.observation', compact('course'));
     }
 }
