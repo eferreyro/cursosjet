@@ -97,4 +97,10 @@ class CourseStatus extends Component
                 $advance = ($i * 100)/($this->course->lessons->count());
                 return round($advance, 2);
         }
+
+        //metodo para descargar recursos
+    public function download()
+    {
+        return response()->download(storage_path('app/public/' . $this->current->resource->url));
+    }
     }

@@ -46,7 +46,7 @@
                             <a class="btn btn-secondary" href="{{route('admin.roles.edit', $role)}}">Edit</a>
                         </td>
                         <td width="10px">
-                        <form action="{{route('admin.roles.destroy', $role)}}" method="POST">
+                        <form action="{{route('admin.roles.destroy', $role)}}" method="POST" class="delete-form">
                             @method('delete')
                             @csrf
                             <button class="btn btn-danger" type="submit">Eliminar</button>
@@ -69,5 +69,26 @@
 @stop
 
 @section('js')
-    <script> console.log('Hi!'); </script>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script>
+        $('.delete-form').submit(function(e) {
+            e.preventDefault();
+            Swal.fire({
+                title: 'Confirmacion requerida',
+                text: "Estas a punto de eliminar una entrada",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Si, eliminar!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    this.submit();
+                }
+            })
+
+
+        });
+
+    </script>
 @stop

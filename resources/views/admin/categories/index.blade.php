@@ -3,7 +3,7 @@
 @section('title', 'SysQA Tests')
 
 @section('content_header')
-<a class="btn btn-secondary btn-sm float-right" href="{{route('admin.categories.create')}}">Nueva Categoria</a>
+    <a class="btn btn-secondary btn-sm float-right" href="{{ route('admin.categories.create') }}">Nueva Categoria</a>
     <h1>Lista de Categorias</h1>
 @stop
 
@@ -13,7 +13,7 @@
             {{ session('info') }}
         </div>
 
-        @endif
+    @endif
     <div class="card">
         <div class="card-body">
             <table class="table table-striped">
@@ -29,17 +29,19 @@
                     @foreach ($categories as $category)
                         <tr>
                             <td>{{ $category->id }}</td>
- 
+
                             <td>{{ $category->name }}</td>
                             <td width="10px">
-                                <a class="btn btn-primary btn-sm" href="{{route('admin.categories.edit', $category)}}">Editar</a>
+                                <a class="btn btn-primary btn-sm"
+                                    href="{{ route('admin.categories.edit', $category) }}">Editar</a>
                             </td>
                             <td width="10px">
-                                <form action="{{route('admin.categories.destroy', $category)}}" method="POST">
-                                @csrf
-                                
-                                @method('delete')
-                                <button class="btn btn-danger btn-sm" type="submit">Eliminar</button>
+                                <form action="{{ route('admin.categories.destroy', $category) }}" method="POST"
+                                    class="delete-form">
+                                    @csrf
+
+                                    @method('delete')
+                                    <button class="btn btn-danger btn-sm" type="submit">Eliminar</button>
                                 </form>
                             </td>
                         </tr>
@@ -48,4 +50,30 @@
             </table>
         </div>
     </div>
+@stop
+
+
+@section('js')
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script>
+        $('.delete-form').submit(function(e) {
+            e.preventDefault();
+            Swal.fire({
+                title: 'Confirmacion requerida',
+                text: "Estas a punto de eliminar una entrada",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Si, eliminar!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    this.submit();
+                }
+            })
+
+
+        });
+
+    </script>
 @stop

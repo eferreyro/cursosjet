@@ -23,7 +23,7 @@
                 </div>
                     
                 @endforeach
-                {!! Form::submit('asignar rol', ['class' => 'btn btn-primary mt-2']) !!}
+                {!! Form::submit('Asignar rol', ['class' => 'btn btn-primary mt-2']) !!}
             {!! Form::close() !!}
 
         </div>
