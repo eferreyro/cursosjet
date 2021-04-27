@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\CourseController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\LevelController;
+use App\Http\Controllers\Admin\PriceController;
 
 Route::get('', [HomeController::class, 'index'])->middleware('can:Ver Dashboard')->name('home');
 
@@ -16,6 +17,8 @@ Route::resource('roles', RoleController::class)->names('roles');
 
 //Genero ruta de tipo resource para los Users (7 rutas necesarias para 1 CRUD)
 Route::resource('users', UserController::class)->only(['index', 'edit', 'update'])->names('users');
+
+
 
 //Ruta de cursos pendientes del Administrador de Cursos
 Route::get('courses', [CourseController::class, 'index'])->name('courses.index');
@@ -27,6 +30,9 @@ Route::resource('categories', CategoryController::class)->names('categories');
 
 //Ruta de CRUD Niveles del Administrador de Cursos
 Route::resource('levels', LevelController::class)->names('levels');
+
+//Ruta de CRUD Niveles del Administrador de Cursos
+Route::resource('prices', PriceController::class)->names('prices');
 
 
 

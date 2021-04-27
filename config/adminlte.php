@@ -277,6 +277,14 @@ return [
             'route'           => 'admin.levels.index',
             'icon'          => 'fas fa-chart-line',
         ],
+        [
+            'text'          => 'Precios',
+            'route'           => 'admin.prices.index',
+            'icon'          => 'fas fa-dollar-sign',
+        ],
+
+
+        
         ['header'           => 'CURSOS'],
         [
             'text'          => 'Pendientes de Publicacion',

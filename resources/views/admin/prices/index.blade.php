@@ -3,8 +3,8 @@
 @section('title', 'SysQA Tests')
 
 @section('content_header')
-    <a class="btn btn-secondary float-right" href="{{route('admin.levels.create')}}">Nuevo Nivel</a>
-    <h1>Lista de Niveles</h1>
+    <a class="btn btn-secondary float-right" href="{{route('admin.prices.create')}}">Nuevo Precio</a>
+    <h1>Lista de Precios</h1>
 @stop
 
 @section('content')
@@ -27,16 +27,15 @@
 
 
                <tbody>
-                   @foreach ($levels as $level)
+                   @foreach ($prices as $price)
                    <tr>
-                       <td>{{$level->id}}</td>
-                       <td>{{$level->name}}</td>
+                       <td>{{$price->id}}</td>
+                       <td>{{$price->name}}</td>
                        <td width="10px">
-                           <a class="btn btn-primary
-                           " href="{{route('admin.levels.edit', $level)}}">Editar</a>
+                           <a class="btn btn-primary" href="{{route('admin.prices.edit', $price)}}">Editar</a>
                        </td>
                        <td width="10px">
-                          <form method="POST" action="{{route('admin.levels.destroy', $level)}}">
+                          <form method="POST" action="{{route('admin.prices.destroy', $price)}}">
                             @csrf  
                             @method('DELETE')
                             <button class="btn btn-danger" type="submit">Eliminar</button>
