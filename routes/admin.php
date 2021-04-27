@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\CourseController;
+use App\Http\Controllers\Admin\CategoryController;
 
 Route::get('', [HomeController::class, 'index'])->middleware('can:Ver Dashboard')->name('home');
 
@@ -17,6 +18,19 @@ Route::resource('users', UserController::class)->only(['index', 'edit', 'update'
 
 //Ruta de cursos pendientes del Administrador de Cursos
 Route::get('courses', [CourseController::class, 'index'])->name('courses.index');
+
+
+
+//Ruta de cursos pendientes del Administrador de Cursos
+Route::resource('categories', CategoryController::class)->names('categories');
+
+
+
+
+
+
+
+
 
 
 //Ruta de boton de Revisar del administrador de cursos que nos muestra el curso a aprovar
