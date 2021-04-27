@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\CourseController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\LevelController;
 
 Route::get('', [HomeController::class, 'index'])->middleware('can:Ver Dashboard')->name('home');
 
@@ -21,9 +22,11 @@ Route::get('courses', [CourseController::class, 'index'])->name('courses.index')
 
 
 
-//Ruta de cursos pendientes del Administrador de Cursos
+//Ruta de CRUD categorias del Administrador de Cursos
 Route::resource('categories', CategoryController::class)->names('categories');
 
+//Ruta de CRUD Niveles del Administrador de Cursos
+Route::resource('levels', LevelController::class)->names('levels');
 
 
 

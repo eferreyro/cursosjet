@@ -273,12 +273,19 @@ return [
             'icon'          => 'fas fa-fw fa-cogs',
         ],
         [
+            'text'          => 'Niveles',
+            'route'           => 'admin.levels.index',
+            'icon'          => 'fas fa-chart-line',
+        ],
+        ['header'           => 'CURSOS'],
+        [
             'text'          => 'Pendientes de Publicacion',
             'route'           => 'admin.courses.index',
             'icon'          => 'fas fa-fw fa-user',
         ],
+        ['header'           => 'USUARIOS'],
         [
-            'text'          => 'change_password',
+            'text'          => 'Cambiar Password',
             'url'           => 'admin/settings',
             'icon'          => 'fas fa-fw fa-lock',
         ],
