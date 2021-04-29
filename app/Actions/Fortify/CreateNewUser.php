@@ -25,10 +25,14 @@ class CreateNewUser implements CreatesNewUsers
             'password' => $this->passwordRules(),
         ])->validate();
 
-        return User::create([
+        $user = User::create([
             'name' => $input['name'],
             'email' => $input['email'],
             'password' => Hash::make($input['password']),
         ]);
+        //Cuando un usuario se registra en nuestra APP, se registra tambien en Stripe
+        $user->createAsStripeCustomer();
+        return $user;
+
     }
 }

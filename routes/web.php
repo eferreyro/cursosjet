@@ -6,6 +6,9 @@ use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CourseController;
 use App\Http\Livewire\CourseStatus;
+use App\Http\Controllers\CourselfController;
+use App\Http\Controllers\BillingController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -32,6 +35,11 @@ Route::get('blog', [BlogController::class, 'index'])->name('blog.index');
 //Ruta para mostrar la Acceso VIP
 Route::get('vip', [VipController::class, 'index'])->name('vip.index');
 
+//Ruta para mostrar el boton de Pagos en los usuarios registrados->menu de Usuario
+Route::get('billing', [BillingController::class, 'index'])->middleware('auth')->name('billing.index');
+
+//Ruta para mostrar el boton de Mis Cursos en los usuarios registrados->menu de Usuario
+Route::get('courself', [CourselfController::class, 'index'])->middleware('auth')->name('courself.index');
 
 
 //Ruta para mostrar la informacion del curso

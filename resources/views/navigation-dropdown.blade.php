@@ -33,8 +33,8 @@ $nav_links = [
 
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
-                        <x-jet-application-mark class="block h-9 w-auto" />
+                    <a href="{{ route('home') }}">
+                        <x-jet-application-mark class="block h-10 w-auto" />
                     </a>
                 </div>
 
@@ -94,7 +94,14 @@ $nav_links = [
                                 Perfil
                                       
                             </x-jet-dropdown-link>
-
+                            <x-jet-dropdown-link href="{{ route('courself.index') }}">
+                                Mis Cursos Activos
+                                      
+                            </x-jet-dropdown-link>
+                            <x-jet-dropdown-link href="{{ route('billing.index') }}">
+                                Facturacion
+                                      
+                            </x-jet-dropdown-link>
                             @can('Ver Cursos')
                                 <x-jet-dropdown-link href="{{ route('instructor.courses.index') }}">
                                     Instructor
@@ -213,6 +220,14 @@ $nav_links = [
                     <x-jet-responsive-nav-link href="{{ route('profile.show') }}"
                         :active="request()->routeIs('profile.show')">
                         Perfil
+                    </x-jet-responsive-nav-link>
+                                        <x-jet-responsive-nav-link href="{{ route('billing.index') }}"
+                        :active="request()->routeIs('billing.index')">
+                        Facturacion
+                    </x-jet-responsive-nav-link>
+                                                            <x-jet-responsive-nav-link href="{{ route('courself.index') }}"
+                        :active="request()->routeIs('courself.index')">
+                        Mis Cursos
                     </x-jet-responsive-nav-link>
                     @can('Ver Cursos')
                         <x-jet-responsive-nav-link href="{{ route('instructor.courses.index') }}"
