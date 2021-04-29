@@ -97,7 +97,7 @@
 
             {{-- REQUISITOS --}}
             <section class="mb-8">
-                <h1 class="font-bold text-3xl">Requisitos
+                <h1 class="font-bold text-3xl">Herramientas necesarias
                 </h1>
                 <ul class="list-disc list-inside">
                     @forelse ($course->requirements as $requirement)

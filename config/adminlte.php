@@ -45,12 +45,12 @@ return [
     |
     */
 
-    'logo' => '<b>Win</b>SYS',
-    'logo_img' => 'vendor/adminlte/dist/img/logo-icon.svg',
+    'logo' => '<b>Punto</b>de Turron',
+    'logo_img' => 'vendor/adminlte/dist/img/logochef.svg',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
-    'logo_img_alt' => 'WinSys ADMIN',
+    'logo_img_alt' => 'Punto de Turron ADMIN',
 
     /*
     |--------------------------------------------------------------------------

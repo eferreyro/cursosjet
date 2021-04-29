@@ -37,11 +37,6 @@ Route::resource('prices', PriceController::class)->names('prices');
 
 
 
-
-
-
-
-
 //Ruta de boton de Revisar del administrador de cursos que nos muestra el curso a aprovar
 Route::get('courses/{course}', [CourseController::class, 'show'])->name('courses.show');
 

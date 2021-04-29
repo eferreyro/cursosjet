@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\BlogController;
+use App\Http\Controllers\VipController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CourseController;
@@ -23,6 +25,14 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 //Ruta para mostrar la lista de cursos
 Route::get('cursos', [CourseController::class, 'index'])->name('courses.index');
+
+//Ruta para mostrar la lista de Blog
+Route::get('blog', [BlogController::class, 'index'])->name('blog.index');
+
+//Ruta para mostrar la Acceso VIP
+Route::get('vip', [VipController::class, 'index'])->name('vip.index');
+
+
 
 //Ruta para mostrar la informacion del curso
 Route::get('cursos/{course}', [CourseController::class, 'show'])->name('courses.show');
