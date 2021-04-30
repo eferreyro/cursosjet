@@ -8,5 +8,7 @@
         <!-- component -->
    
         </section>
-       
+                <div class="w-full mt-2">
+                    <button class="font-bold bg-gray-600 hover:bg-gray-700 text-yellow-200 rounded-md px-10 py-2 transition-colors w-full"><a href="billing" >Quiero suscribirme</a></button>
+                </div>
 </x-app-layout>

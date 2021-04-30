@@ -39,7 +39,7 @@
             @empty
 
                 <article class="p-2">
-                    <h1 class="text-sm text-gray-700">No cuenta con ningún método de pago</h1>
+                    <h1 class="text-sm text-gray-700">Aun no has agregado un método de pago</h1>
                 </article>
 
             @endforelse
